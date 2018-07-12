@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to Functions Runtime",
+            "type": "node",
+            "request": "attach",
+            "port": 5858,
+            "outFiles": ["${workspaceFolder}/build/**/*.js"],
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "/mnt/c/Users/Daniel/Code/Sunfile/sunfile-next/functions",
+            "sourceMapPathOverrides": {
+                "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+                "webpack:///./*": "${workspaceFolder}/*",
+                "webpack:///*": "*",
+                "/mnt/c/*": "C:\\*"
+            },
+            "trace": true
+        }
+    ]
+}

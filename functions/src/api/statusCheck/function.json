@@ -1,0 +1,18 @@
+{
+    "disabled": false,
+    "scriptFile": "statusCheck.js",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "ping"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
