@@ -7,6 +7,4 @@ export async function run(context: Context, req: HttpRequest): Promise<void> {
         status: HttpStatusCode.OK,
         body: "pong"
     };
-
-    context.done();
 }

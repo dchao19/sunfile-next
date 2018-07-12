@@ -6,16 +6,15 @@
             "type": "node",
             "request": "attach",
             "port": 5858,
-            "outFiles": ["${workspaceFolder}/build/**/*.js"],
-            "localRoot": "${workspaceFolder}",
+            "outFiles": ["${workspaceFolder}/functions/build/**/*.js"],
+            "localRoot": "${workspaceFolder}/functions",
             "remoteRoot": "/mnt/c/Users/Daniel/Code/Sunfile/sunfile-next/functions",
             "sourceMapPathOverrides": {
-                "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
-                "webpack:///./*": "${workspaceFolder}/*",
+                "webpack:///./~/*": "${workspaceFolder}/functions/node_modules/*",
+                "webpack:///./*": "${workspaceFolder}/functions/*",
                 "webpack:///*": "*",
                 "/mnt/c/*": "C:\\*"
-            },
-            "trace": true
+            }
         }
     ]
 }
