@@ -1,13 +1,16 @@
-import { Context, HttpRequest, HttpStatusCode } from "azure-functions-ts-essentials";
+import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
 import { secured } from "../../utils/tokenVerifier";
+import { SecuredHttpRequest } from "../../types/SecuredHttpRequest";
 
-export const run = secured((context: Context, req: HttpRequest) => {
-    context.res = {
-        status: HttpStatusCode.OK,
-        body: {
-            success: true,
-            message: null,
-            result: null
-        }
-    };
+export const run = secured((context: Context, req: SecuredHttpRequest) => {
+	context.res = {
+		status: HttpStatusCode.OK,
+		body: {
+			success: true,
+			message: null,
+			result: {
+				user: req.user
+			}
+		}
+	};
 });

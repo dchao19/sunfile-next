@@ -1,6 +1,12 @@
 import { Context, HttpRequest } from "azure-functions-ts-essentials";
+import { SecuredHttpRequest } from "./SecuredHttpRequest";
 
-type AzureHttpFunctionSync = (context: Context, req: HttpRequest) => void;
-type AzureHttpFunctionAsync = (context: Context, req: HttpRequest) => Promise<void>;
+export type AzureHttpFunction = (
+	context: Context,
+	req: HttpRequest
+) => void | Promise<void>;
 
-export type AzureHttpFunction = AzureHttpFunctionSync | AzureHttpFunctionAsync;
+export type SecuredAzureHttpFunction = (
+	context: Context,
+	req: SecuredHttpRequest
+) => void | Promise<void>;
