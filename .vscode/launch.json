@@ -1,20 +1,32 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Attach to Functions Runtime",
-            "type": "node",
-            "request": "attach",
-            "port": 5858,
-            "outFiles": ["${workspaceFolder}/functions/build/**/*.js"],
-            "localRoot": "${workspaceFolder}/functions",
-            "remoteRoot": "/mnt/c/Users/Daniel/Code/Sunfile/sunfile-next/functions",
-            "sourceMapPathOverrides": {
-                "webpack:///./~/*": "${workspaceFolder}/functions/node_modules/*",
-                "webpack:///./*": "${workspaceFolder}/functions/*",
-                "webpack:///*": "*",
-                "/mnt/c/*": "C:\\*"
-            }
-        }
-    ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Attach to Functions Runtime",
+			"type": "node",
+			"request": "attach",
+			"port": 5858,
+			"outFiles": ["${workspaceFolder}/functions/build/**/*.js"],
+			"localRoot": "${workspaceFolder}/functions",
+			"remoteRoot": "/mnt/c/Users/Daniel/Code/Sunfile/sunfile-next/functions",
+			"sourceMapPathOverrides": {
+				"webpack:///./~/*": "${workspaceFolder}/functions/node_modules/*",
+				"webpack:///./*": "${workspaceFolder}/functions/*",
+				"webpack:///*": "*",
+				"/mnt/c/*": "C:\\*"
+			}
+		},
+		{
+			"name": "Attach to Functions Runtime Mac",
+			"type": "node",
+			"request": "attach",
+			"port": 5858,
+			"outFiles": ["${workspaceFolder}/functions/build/**/*.js"],
+			"sourceMapPathOverrides": {
+				"webpack:///./~/*": "${workspaceFolder}/functions/node_modules/*",
+				"webpack:///./*": "${workspaceFolder}/functions/*",
+				"webpack:///*": "*"
+			}
+		}
+	]
 }
