@@ -1,0 +1,30 @@
+{
+    "manifest_version": 2,
+    "name": "SunFile",
+    "description":
+        "A small extemp utiliy that downloads an article in a word document format with publication names and dates.",
+    "version": "3.0.0",
+    "browser_action": {
+        "default_icon": "icons/icon19.png",
+        "default_popup": "index.html"
+    },
+    "permissions": [
+        "activeTab",
+        "<all_urls>",
+        "downloads",
+        "storage",
+        "cookies",
+        "identity",
+        "notifications"
+    ],
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "key":
+        "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAolIeg2CM7JYOorh7XYJc3OmvkNib2GVhk6InEpN6JuuTNAQhfDBQ5J5Ri8aDxssKaGbHu2vdd2x/O+/wgYadDIF0AUZ4tiFyo07l6ZDN4fY5iqPadNnozNjEVvGvue1dnIGcFTlho6BEuYfnuXRhmr7c3IjHE33WpJOEnHeRaLzRqRk+VUAKLNDJDjcm+BEbm8KuSuhq0Tp3+/xWKeVXKUr4Jlr7tXgo0csnDc7BzPDOAVfiVktGIzFd+kbCxE2x5FuS/INBjyMyp/UWOFs0doIFM6zw1ppq08RZauX/RS34iFSW6d9FURsWFx3pZDzcvOzrGoqsrS+4bXkgRoD1twIDAQAB",
+    "externally_connectable": {
+        "matches": ["http://localhost:3000/*", "https://sunfile-danielchao.rhcloud.com/*"]
+    }
+}
