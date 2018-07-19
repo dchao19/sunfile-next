@@ -6,14 +6,6 @@
     </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import NavigationBar from "@/components/NavigationBar.vue";
-
-@Component
-export default class App extends Vue {}
-</script>
-
 <style>
 #app {
 	font-family: "Rubik", Helvetica, Arial, sans-serif;
@@ -22,5 +14,6 @@ export default class App extends Vue {}
 	text-align: center;
 	color: #2c3e50;
 	width: 400px;
+	padding: 20px 20px 20px 20px;
 }
 </style>
