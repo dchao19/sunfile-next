@@ -1,13 +1,6 @@
 import * as OktaJwtVerifier from "@okta/jwt-verifier";
-import {
-	Context,
-	HttpRequest,
-	HttpStatusCode
-} from "azure-functions-ts-essentials";
-import {
-	AzureHttpFunction,
-	SecuredAzureHttpFunction
-} from "../types/AzureHttpFunction";
+import { Context, HttpRequest, HttpStatusCode } from "azure-functions-ts-essentials";
+import { AzureHttpFunction, SecuredAzureHttpFunction } from "../types/AzureHttpFunction";
 import { UserData } from "../types/OktaUser";
 
 const oktaJwtVerifier = new OktaJwtVerifier({
@@ -45,8 +38,7 @@ const secured = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
 				body: {
 					success: false,
 					result: null,
-					message:
-						"Access denied: token missing, malformed, or failed validation."
+					message: "Access denied: token missing, malformed, or failed validation."
 				}
 			};
 			return context.done();

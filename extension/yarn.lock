@@ -7461,6 +7461,10 @@ vue-loader@^15.2.4:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-material-design-icons@^1.5.1:
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/vue-material-design-icons/-/vue-material-design-icons-1.5.1.tgz#e3555046e3f099baaae0556fcea1e0b19cf030f5"
+
 vue-parser@^1.1.5:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/vue-parser/-/vue-parser-1.1.6.tgz#3063c8431795664ebe429c23b5506899706e6355"
