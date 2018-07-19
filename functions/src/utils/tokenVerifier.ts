@@ -41,7 +41,7 @@ const secured = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
 					message: "Access denied: token missing, malformed, or failed validation."
 				}
 			};
-			return context.done();
+			return;
 		}
 	};
 };
