@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@okta/okta-auth-js": "^1.17.0",
-    "@okta/okta-vue": "^1.0.1",
     "@types/chrome": "^0.0.69",
     "@types/uuid": "^3.4.3",
     "bootstrap-vue": "^2.0.0-rc.11",
