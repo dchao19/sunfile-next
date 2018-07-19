@@ -3,7 +3,7 @@
         <b-container fluid>
             <router-view/>
         </b-container>
-  </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -16,11 +16,11 @@ export default class App extends Vue {}
 
 <style>
 #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    width: 400px;
+	font-family: "Rubik", Helvetica, Arial, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	color: #2c3e50;
+	width: 400px;
 }
 </style>
