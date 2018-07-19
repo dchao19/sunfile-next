@@ -4,6 +4,7 @@ import Router from "vue-router";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
 import ImplicitCallback from "@/views/ImplicitCallback.vue";
+import JoinTeam from "@/views/JoinTeam.vue";
 
 import AuthService from "./utils/authService";
 import { isExtension } from "@/utils/isExtension";
@@ -23,6 +24,11 @@ const router = new Router({
 			path: "/login",
 			name: "login",
 			component: Login
+		},
+		{
+			path: "/join",
+			name: "join",
+			component: JoinTeam
 		},
 		{
 			path: "/implicit/callback",
