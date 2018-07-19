@@ -2,118 +2,138 @@ import { getCookie, setCookie } from "./cookies";
 import * as OktaAuth from "@okta/okta-auth-js";
 import uuidv4 from "uuid/v4";
 import { Route, Location, RawLocation } from "vue-router";
+import { isExtension } from "@/utils/isExtension";
 
 class AuthService {
-    okta = new OktaAuth({
-        clientId: process.env.VUE_APP_OKTA_CLIENT_ID,
-        issuer: process.env.VUE_APP_OKTA_ISSUER,
-        redirectUri: chrome.identity.getRedirectURL(),
-        url: process.env.VUE_APP_OKTA_URL
-    });
-    urls = {
-        issuer: process.env.VUE_APP_OKTA_ISSUER,
-        authorizeUrl: process.env.VUE_APP_OKTA_ISSUER + "/v1/authorize",
-        userinfoUrl: process.env.VUE_APP_OKTA_ISSUER + "/v1/userinfo"
-    };
+	scopes: string = "";
+	state: string = uuidv4();
+	nonce: string = uuidv4();
+	redirectUri: string = isExtension()
+		? chrome.identity.getRedirectURL()
+		: "http://localhost:8080/implicit/callback";
 
-    scopes: string = "";
-    state: string = uuidv4();
-    nonce: string = uuidv4();
+	authConfig = {
+		clientId: process.env.VUE_APP_OKTA_CLIENT_ID,
+		issuer: process.env.VUE_APP_OKTA_ISSUER,
+		redirectUri: this.redirectUri,
+		url: process.env.VUE_APP_OKTA_URL
+	};
+	urls = {
+		issuer: process.env.VUE_APP_OKTA_ISSUER,
+		authorizeUrl: process.env.VUE_APP_OKTA_ISSUER + "/v1/authorize",
+		userinfoUrl: process.env.VUE_APP_OKTA_ISSUER + "/v1/userinfo"
+	};
 
-    constructor(options: { scopes: string }) {
-        this.scopes = options.scopes;
+	okta = new OktaAuth(this.authConfig);
 
-        this.setOAuthParamCookie = this.setOAuthParamCookie.bind(this);
-        this.handleAuthentication = this.handleAuthentication.bind(this);
-        this.isAuthenticated = this.isAuthenticated.bind(this);
-        this.login = this.login.bind(this);
-    }
+	constructor(options: { scopes: string }) {
+		this.scopes = options.scopes;
 
-    get accessToken(): string {
-        const token = this.okta.tokenManager.get("accessToken");
-        return token ? token : undefined;
-    }
+		this.setOAuthParamCookie = this.setOAuthParamCookie.bind(this);
+		this.handleAuthentication = this.handleAuthentication.bind(this);
+		this.isAuthenticated = this.isAuthenticated.bind(this);
+		this.login = this.login.bind(this);
+	}
 
-    get idToken(): string {
-        const token = this.okta.tokenManager.get("idToken");
-        return token ? token : undefined;
-    }
+	get accessToken(): string {
+		const token = this.okta.tokenManager.get("accessToken");
+		return token ? token : undefined;
+	}
 
-    setOAuthParamCookie() {
-        const params = {
-            responseType: ["token", "id_token"],
-            state: this.state,
-            nonce: this.nonce,
-            scopes: this.scopes,
-            urls: this.urls
-        };
+	get idToken(): string {
+		const token = this.okta.tokenManager.get("idToken");
+		return token ? token : undefined;
+	}
 
-        setCookie(process.env.VUE_APP_OAUTH_PARAMS_COOKIE_NAME as string, JSON.stringify(params));
-        setCookie(process.env.VUE_APP_STATE_COOKIE_NAME as string, this.state);
-        setCookie(process.env.VUE_APP_NONCE_COOKIE_NAME as string, this.nonce);
-    }
+	setOAuthParamCookie() {
+		const params = {
+			responseType: ["token", "id_token"],
+			state: this.state,
+			nonce: this.nonce,
+			scopes: this.scopes,
+			urls: this.urls
+		};
 
-    authorizeUrl(): string {
-        const baseUrl = `${this.urls.authorizeUrl}?`;
-        const redirectUrl = chrome.identity.getRedirectURL();
+		setCookie(
+			process.env.VUE_APP_OAUTH_PARAMS_COOKIE_NAME as string,
+			JSON.stringify(params)
+		);
+		setCookie(process.env.VUE_APP_STATE_COOKIE_NAME as string, this.state);
+		setCookie(process.env.VUE_APP_NONCE_COOKIE_NAME as string, this.nonce);
+	}
 
-        const params: { [key: string]: string } = {
-            client_id: process.env.VUE_APP_OKTA_CLIENT_ID as string,
-            nonce: this.nonce,
-            redirect_uri: redirectUrl,
-            response_type: "token id_token",
-            scope: this.scopes,
-            state: this.state
-        };
+	authorizeUrl(): string {
+		const baseUrl = `${this.urls.authorizeUrl}?`;
 
-        const formattedParams = new URLSearchParams();
-        Object.keys(params).forEach(key => formattedParams.append(key, params[key]));
+		const params: { [key: string]: string } = {
+			client_id: process.env.VUE_APP_OKTA_CLIENT_ID as string,
+			nonce: this.nonce,
+			redirect_uri: this.redirectUri,
+			response_type: "token id_token",
+			scope: this.scopes,
+			state: this.state
+		};
 
-        return baseUrl + formattedParams.toString();
-    }
+		const formattedParams = new URLSearchParams();
+		Object.keys(params).forEach(key =>
+			formattedParams.append(key, params[key])
+		);
 
-    async handleAuthentication(callbackUrl: string) {
-        const tokens = await this.okta.token.parseFromUrl(callbackUrl);
-        tokens.forEach((token: any) => {
-            if (token.accessToken) this.okta.tokenManager.add("accessToken", token);
-            if (token.idToken) this.okta.tokenManager.add("idToken", token);
-        });
-    }
+		return baseUrl + formattedParams.toString();
+	}
 
-    async notifyAuthenticated() {
-        return chrome.notifications.create(uuidv4(), {
-            type: "basic",
-            iconUrl: "icons/icon128.png",
-            title: "You're all set!",
-            message:
-                "You've signed in successfully. To use Sunfile, please open the extension again."
-        });
-    }
+	async handleAuthentication(callbackUrl?: string) {
+		const tokens = await this.okta.token.parseFromUrl(callbackUrl);
+		tokens.forEach((token: any) => {
+			if (token.accessToken) this.okta.tokenManager.add("accessToken", token);
+			if (token.idToken) this.okta.tokenManager.add("idToken", token);
+		});
+	}
 
-    isAuthenticated() {
-        return !!this.idToken && !!this.accessToken;
-    }
+	notifyAuthenticated() {
+		chrome.notifications.create(uuidv4(), {
+			type: "basic",
+			iconUrl: "icons/icon128.png",
+			title: "You're all set!",
+			message:
+				"You've signed in successfully. To use Sunfile, please open the extension again."
+		});
+	}
 
-    login() {
-        this.setOAuthParamCookie();
-        chrome.identity.launchWebAuthFlow(
-            {
-                url: this.authorizeUrl(),
-                interactive: true
-            },
-            async redirected => {
-                if (redirected) {
-                    await this.handleAuthentication(redirected);
-                    await this.notifyAuthenticated();
-                }
-            }
-        );
-    }
+	isAuthenticated() {
+		return !!this.idToken && !!this.accessToken;
+	}
 
-    authRequired = (to: Route, from: Route, next: (to?: RawLocation) => void) => {
-        console.log(this.isAuthenticated());
-        this.isAuthenticated() ? next() : next("/login");
-    };
+	login() {
+		isExtension() ? this.extensionLogin() : this.redirectLogin();
+	}
+
+	extensionLogin() {
+		this.setOAuthParamCookie();
+		chrome.identity.launchWebAuthFlow(
+			{
+				url: this.authorizeUrl(),
+				interactive: true
+			},
+			async redirected => {
+				if (redirected) {
+					await this.handleAuthentication(redirected);
+					this.notifyAuthenticated();
+				}
+			}
+		);
+	}
+
+	redirectLogin() {
+		this.okta.token.getWithRedirect({
+			responseType: ["token", "id_token"],
+			scopes: this.scopes.split(" ")
+		});
+	}
+
+	authRequired = (to: Route, from: Route, next: (to?: RawLocation) => void) => {
+		this.isAuthenticated() ? next() : next("/login");
+	};
 }
 
 const Auth = new AuthService({ scopes: "openid profile email" });
