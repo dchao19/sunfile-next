@@ -1,6 +1,6 @@
 import { HttpRequest } from "azure-functions-ts-essentials";
-import { UserData } from "./OktaUser";
+import User from "../models/User.model";
 
 export interface SecuredHttpRequest extends HttpRequest {
-	user: UserData;
+    user: User;
 }

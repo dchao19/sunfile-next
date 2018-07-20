@@ -1,0 +1,19 @@
+{
+    "disabled": false,
+    "scriptFile": "getTeam.js",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "teams",
+            "methods": ["get"]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
