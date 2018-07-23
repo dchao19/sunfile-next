@@ -2,7 +2,7 @@ import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
 import { SecuredHttpRequest } from "../../../types/SecuredHttpRequest";
 import Team from "../../../models/Team.model";
 
-import { secured } from "../../../utils/tokenVerifier";
+import { withAuth } from "../../../utils/withAuth";
 import User from "../../../models/User.model";
 
 const run = async (context: Context, req: SecuredHttpRequest) => {
@@ -29,4 +29,4 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         }
     };
 };
-export default secured(run);
+export default withAuth(run);

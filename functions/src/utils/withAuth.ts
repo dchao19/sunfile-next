@@ -15,7 +15,7 @@ const extractTokenFromHeader = (header: string): string => {
     return header.split(" ")[1];
 };
 
-const secured = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
+const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
     return withDatabase(async (context: Context, req: HttpRequest) => {
         const authorizationHeader = req.headers["authorization"];
         if (typeof authorizationHeader === "undefined" || !authorizationHeader) {
@@ -43,7 +43,6 @@ const secured = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
 
             if (!user) {
                 const profile = await getUserProfile(accessToken);
-                console.log(profile);
                 user = new User({
                     oktaUserId: claims.uid,
                     isCaptain: false,
@@ -68,4 +67,4 @@ const secured = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
     });
 };
 
-export { secured };
+export { withAuth };
