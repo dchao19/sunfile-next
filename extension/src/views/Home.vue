@@ -12,21 +12,21 @@
 import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "@/components/HelloWorld.vue"; // @ is an alias to /src
 import NavigationBar from "@/components/NavigationBar.vue";
-import Auth from "@/utils/authService";
+import Auth from "@/services/authService";
 
 @Component({
-    components: {
-        HelloWorld,
-        NavigationBar
-    }
+	components: {
+		HelloWorld,
+		NavigationBar
+	}
 })
 export default class Home extends Vue {
-    clickLogin() {
-        Auth.login();
-    }
+	clickLogin() {
+		Auth.login();
+	}
 
-    clickLogin2() {
-        // (this as any).$auth.loginRedirect("/");
-    }
+	clickLogin2() {
+		// (this as any).$auth.loginRedirect("/");
+	}
 }
 </script>

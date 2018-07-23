@@ -11,26 +11,26 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import UserIcon from "vue-material-design-icons/account-circle.vue";
-import Auth from "@/utils/authService";
+import Auth from "@/services/authService";
 
 @Component({
-	components: {
-		UserIcon
-	}
+  components: {
+    UserIcon
+  }
 })
 export default class Login extends Vue {
-	loginClick() {
-		Auth.login();
-	}
+  loginClick() {
+    Auth.login();
+  }
 }
 </script>
 
 <style scoped>
 .login {
-	padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .userIcon {
-	font-size: 3.2em;
+  font-size: 3.2em;
 }
 </style>

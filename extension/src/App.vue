@@ -10,12 +10,12 @@
 
 <style>
 #app {
-	font-family: "Rubik", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	width: 400px;
-	padding: 20px 20px 20px 20px;
+  font-family: "Rubik", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  width: 400px;
+  padding: 20px 20px 20px 20px;
 }
 </style>

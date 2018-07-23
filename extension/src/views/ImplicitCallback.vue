@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AuthService from "@/utils/authService";
+import AuthService from "@/services/authService";
 
 @Component
 export default class ImplicitCallback extends Vue {
