@@ -2,15 +2,13 @@ reporters =
 	process.env.CI === "true"
 		? [
 				[
-					"jest-tap-reporter",
+					"jest-junit",
 					{
-						logLevel: "INFO",
-						showInternalStackTraces: true,
-						filePath: "output.tap"
+						output: "./TEST-result.xml"
 					}
 				]
 		  ]
-		: undefined;
+		: ["default"];
 
 module.exports = {
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "vue"],
