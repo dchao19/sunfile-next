@@ -22,3 +22,4 @@ yarn-error.log*
 
 coverage/
 TEST-result.xml
+output.tap

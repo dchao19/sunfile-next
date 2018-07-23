@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@babel/code-frame@7.0.0-beta.36":
+  version "7.0.0-beta.36"
+  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.36.tgz#2349d7ec04b3a06945ae173280ef8579b63728e4"
+  dependencies:
+    chalk "^2.0.0"
+    esutils "^2.0.2"
+    js-tokens "^3.0.0"
+
 "@babel/code-frame@7.0.0-beta.44":
   version "7.0.0-beta.44"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.44.tgz#2a02643368de80916162be70865c97774f3adbd9"
@@ -4195,6 +4203,17 @@ jest-snapshot@^23.4.1:
     pretty-format "^23.2.0"
     semver "^5.5.0"
 
+jest-tap-reporter@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/jest-tap-reporter/-/jest-tap-reporter-1.9.0.tgz#bf3364a97116454b5f34d73cf9cda16e2cb318d1"
+  dependencies:
+    "@babel/code-frame" "7.0.0-beta.36"
+    chalk "^2.3.0"
+    string.prototype.padend "^3.0.0"
+    string.prototype.padstart "^3.0.0"
+    strip-ansi "4.0.0"
+    utf8-bar "0.1.0"
+
 jest-transform-stub@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/jest-transform-stub/-/jest-transform-stub-1.0.0.tgz#e4e941454f31a8bbc4db96b31f46a08b294372b1"
@@ -6832,17 +6851,17 @@ string_decoder@~0.10.x:
   version "0.10.31"
   resolved "https://registry.yarnpkg.com/string_decoder/-/string_decoder-0.10.31.tgz#62e203bc41766c6c28c9fc84301dab1c5310fa94"
 
+strip-ansi@4.0.0, strip-ansi@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
+  dependencies:
+    ansi-regex "^3.0.0"
+
 strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-3.0.1.tgz#6a385fb8853d952d5ff05d0e8aaf94278dc63dcf"
   dependencies:
     ansi-regex "^2.0.0"
-
-strip-ansi@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-4.0.0.tgz#a8479022eb1ac368a871389b635262c505ee368f"
-  dependencies:
-    ansi-regex "^3.0.0"
 
 strip-bom@3.0.0, strip-bom@^3.0.0:
   version "3.0.0"
@@ -7328,6 +7347,10 @@ url@^0.11.0:
 use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
+
+utf8-bar@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/utf8-bar/-/utf8-bar-0.1.0.tgz#789195506e88c6762309920b1627a77e64e1f7c1"
 
 util-deprecate@~1.0.1:
   version "1.0.2"

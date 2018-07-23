@@ -1,3 +1,17 @@
+reporters =
+	process.env.CI === "true"
+		? [
+				[
+					"jest-tap-reporter",
+					{
+						logLevel: "INFO",
+						showInternalStackTraces: true,
+						filePath: "output.tap"
+					}
+				]
+		  ]
+		: undefined;
+
 module.exports = {
 	moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "vue"],
 	transform: {
@@ -13,5 +27,6 @@ module.exports = {
 	testMatch: [
 		"**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
 	],
-	coverageReporters: ["json", "lcov", "text", "cobertura"]
+	coverageReporters: ["json", "lcov", "text", "cobertura"],
+	reporters
 };
