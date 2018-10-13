@@ -1,10 +1,11 @@
 import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
-import { SecuredHttpRequest } from "../../../types/SecuredHttpRequest";
-import Team from "../../../models/Team.model";
-import { generateTeamCode } from "../../../utils/generateTeamCode";
+import { SecuredHttpRequest } from "@/types/SecuredHttpRequest";
 
-import { withAuth } from "../../../utils/withAuth";
-import User from "../../../models/User.model";
+import { generateTeamCode } from "@/utils/generateTeamCode";
+import { withAuth } from "@/utils/withAuth";
+
+import User from "@/models/User.model";
+import Team from "@/models/Team.model";
 
 const run = async (context: Context, req: SecuredHttpRequest) => {
     const name = req.body.teamName as string;

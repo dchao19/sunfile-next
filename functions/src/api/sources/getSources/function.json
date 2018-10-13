@@ -1,0 +1,19 @@
+{
+  "disabled": false,
+  "scriptFile": "createTeam.js",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "sources",
+      "methods": ["get"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

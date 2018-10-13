@@ -18,7 +18,11 @@ module.exports = {
     target: "node",
     resolve: {
         extensions: [".ts", ".js", ".json"],
-        modules: ["node_modules", "src"]
+        modules: ["node_modules", "src"],
+        alias: {
+            '@': path.resolve(__dirname, 'src/'),
+            'node-fetch$': "node-fetch/lib/index.js"
+        }
     },
     devtool: "source-map",
     externals: ["pg", "sqlite3", "pg-hstore", "mysql2"],

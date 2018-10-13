@@ -54,6 +54,7 @@ const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
             const authorizedReq = { ...req, user };
             await next(context, authorizedReq);
         } catch (e) {
+            console.log(e);
             context.res = {
                 status: HttpStatusCode.Unauthorized,
                 body: {

@@ -1,6 +1,7 @@
 import * as uuid from "uuid/v4";
-import { Table, Model, IsUUID, PrimaryKey, Column, DataType, BelongsTo, ForeignKey } from "sequelize-typescript";
+import {Table, Model, IsUUID, PrimaryKey, Column, DataType, BelongsTo, ForeignKey, HasMany} from "sequelize-typescript";
 import Team from "./Team.model";
+import File from "./File.model";
 
 @Table
 export default class User extends Model<User> {
@@ -19,6 +20,9 @@ export default class User extends Model<User> {
 
     @BelongsTo(() => Team)
     team: Team;
+
+    @HasMany(() => File)
+    userFiles: File;
 
     @Column isCaptain: boolean;
 }

@@ -1,0 +1,19 @@
+{
+  "disabled": false,
+  "scriptFile": "createSource.js",
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "sources",
+      "methods": ["post"]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}
