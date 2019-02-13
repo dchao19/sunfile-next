@@ -1,23 +1,15 @@
 import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
-import { SecuredHttpRequest} from "@/types/SecuredHttpRequest";
+import { SecuredHttpRequest } from "@/types/SecuredHttpRequest";
 import { withAuth } from "@/utils/withAuth";
 
-import * as metascraper from "metascraper";
-import * as authorPlugin from 'metascraper-author';
-import * as datePlugin from 'metascraper-date';
-import * as titlePlugin from 'metascraper-title';
 import AylienService from "@/services/aylienService";
 import File from "@/models/File.model";
 import Source from "@/models/Source.model";
 
-import { sequelize } from "@/setups/dbSetup"
-const op = sequelize.Op;
+import Mercury from "@postlight/mercury-parser";
 
-const scraper = metascraper([
-    authorPlugin(),
-    datePlugin(),
-    titlePlugin()
-]);
+import { sequelize } from "@/setups/dbSetup";
+const op = sequelize.Op;
 
 const run = async (context: Context, req: SecuredHttpRequest) => {
     const html = Buffer.from(req.body.html).toString();
@@ -25,17 +17,21 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
 
     try {
         const [metadata, { article }] = await Promise.all([
-            scraper({html, url}),
+            Mercury.parse(url, { html }),
             AylienService.extractText(html)
         ]);
 
         const newFile = new File();
-        newFile.published = new Date(metadata.published);
+        newFile.published = new Date(metadata.date_published);
         newFile.title = metadata.title;
         newFile.url = url;
 
         const source = await Source.findOne({
-            where: sequelize.where(sequelize.fn("CHARINDEX", sequelize.col("rootUrl"), newFile.url), ">", 0)
+            where: sequelize.where(
+                sequelize.fn("CHARINDEX", sequelize.col("rootUrl"), newFile.url),
+                ">",
+                0
+            )
         });
 
         newFile.source = source;
@@ -50,7 +46,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
                 result: newFile,
                 message: "The article's metadata was successfully extracted."
             }
-        }
+        };
     } catch (e) {
         context.res = {
             status: HttpStatusCode.InternalServerError,
@@ -59,9 +55,8 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
                 result: null,
                 message: e
             }
-        }
+        };
     }
-
 };
 
 export default withAuth(run);
