@@ -38,7 +38,7 @@
 		"webpack-cli": "^3.0.8"
 	},
 	"scripts": {
-		"build:dev": "webpack --progress --mode=development --watch",
+		"build:dev": "webpack --progress --mode=development",
 		"start": "cd build && func host start",
 		"start:watch": "concurrently \"npm run build:dev\" \"npm start\""
 	}

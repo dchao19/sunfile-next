@@ -1,0 +1,12 @@
+{
+    "azureFunctions.projectSubpath": "build",
+    "files.exclude": {
+        "obj": true,
+        "bin": true
+    },
+    "azureFunctions.deploySubpath": "build",
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~2",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.preDeployTask": "func: extensions install"
+}
