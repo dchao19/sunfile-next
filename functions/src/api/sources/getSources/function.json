@@ -1,6 +1,6 @@
 {
   "disabled": false,
-  "scriptFile": "createTeam.js",
+  "scriptFile": "getSources.js",
   "bindings": [
     {
       "authLevel": "anonymous",
