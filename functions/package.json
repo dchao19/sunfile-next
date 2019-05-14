@@ -29,6 +29,7 @@
 	},
 	"devDependencies": {
 		"@types/uuid": "^3.4.3",
+		"clean-webpack-plugin": "^2.0.2",
 		"copy-webpack-plugin": "^4.5.2",
 		"dotenv-webpack": "^1.5.7",
 		"ts-loader": "^4.4.2",

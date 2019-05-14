@@ -3,6 +3,7 @@ const path = require("path");
 const webpack = require("webpack");
 const uglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const copyWebpackPlugin = require("copy-webpack-plugin");
+const cleanPlugin = require("clean-webpack-plugin");
 const dotenvPlugin = require("dotenv-webpack");
 
 const OUTPUT_DIR = path.resolve(__dirname, "build");
@@ -42,7 +43,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new dotenvPlugin(),
+        new dotenvPlugin({
+            systemvars: !!process.env.CI
+        }),
         new copyWebpackPlugin([
             {
                 from: "src/host.json",
@@ -60,6 +63,7 @@ module.exports = {
                 to: "[1]/function.json"
             }
         ]),
-        new webpack.ContextReplacementPlugin(/Sequelize(\\|\/)/, path.resolve(__dirname, "./src"))
+        new webpack.ContextReplacementPlugin(/Sequelize(\\|\/)/, path.resolve(__dirname, "./src")),
+        new cleanPlugin()
     ]
 };
