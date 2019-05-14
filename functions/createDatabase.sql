@@ -1,1 +1,1 @@
-CREATE DATABASE sunfile_dev
+CREATE DATABASE "sunfile-local"
