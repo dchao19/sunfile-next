@@ -1,13 +1,13 @@
 {
 	"disabled": false,
-	"scriptFile": "checkAuth.js",
+	"scriptFile": "auth.js",
 	"bindings": [
 		{
 			"authLevel": "function",
 			"type": "httpTrigger",
 			"direction": "in",
 			"name": "req",
-			"route": "auth"
+			"route": "status/auth"
 		},
 		{
 			"type": "http",
