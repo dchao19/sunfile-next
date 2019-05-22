@@ -4,10 +4,15 @@ import Team from "../../../models/Team.model";
 
 import { withAuth } from "../../../utils/withAuth";
 import User from "../../../models/User.model";
+import File from "@/models/File.model";
+import { sequelize } from "@/setups/dbSetup";
 
 const run = async (context: Context, req: SecuredHttpRequest) => {
-    const user = await User.findOne({ where: { id: req.user.id }, include: [Team] });
-    const team = user.team;
+    const team = await Team.findOne({
+        where: {
+            teamCode: req.user.teamCode
+        }
+    });
 
     if (!team) {
         context.res = {
@@ -25,7 +30,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         status: HttpStatusCode.OK,
         body: {
             success: true,
-            result: user.team
+            result: team
         }
     };
 };

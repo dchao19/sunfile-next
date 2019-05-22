@@ -1,5 +1,7 @@
 import * as OktaJwtVerifier from "@okta/jwt-verifier";
 import { Context, HttpRequest, HttpStatusCode } from "azure-functions-ts-essentials";
+import * as uuid from 'uuid/v4';
+
 import { AzureHttpFunction, SecuredAzureHttpFunction } from "../types/AzureHttpFunction";
 import { AccessTokenClaims } from "../types/OktaUser";
 
@@ -46,7 +48,8 @@ const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
                 user = new User({
                     oktaUserId: claims.uid,
                     isCaptain: false,
-                    name: profile.name
+                    name: profile.name,
+                    id: uuid()
                 });
                 await user.save();
             }

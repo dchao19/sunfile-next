@@ -1,1 +1,1 @@
-declare module "@postlight/mercury-parser";
+declare module "@sunfile/parser";

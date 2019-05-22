@@ -35,5 +35,6 @@ function domToString(documentRoot) {
 
 chrome.runtime.sendMessage({
     requestType: "pageSource",
-    source: domToString(document)
+    source: domToString(document),
+    url: document.location.href
 });

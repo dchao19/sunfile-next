@@ -37,12 +37,22 @@ class AuthService {
 
 	get accessToken(): string {
 		const token = this.okta.tokenManager.get("accessToken");
-		return token ? token : undefined;
+		return token ? token.accessToken : undefined;
 	}
 
 	get idToken(): string {
 		const token = this.okta.tokenManager.get("idToken");
-		return token ? token : undefined;
+		return token ? token.idToken : undefined;
+	}
+
+	get expiresAt(): number {
+		const token = this.okta.tokenManager.get("accessToken");
+		return token ? token.expiresAt : 0;
+	}
+
+	get name(): string { 
+		const token = this.okta.tokenManager.get("idToken");
+		return token ? token.claims.name : undefined;
 	}
 
 	setOAuthParamCookie() {
@@ -101,7 +111,7 @@ class AuthService {
 	}
 
 	isAuthenticated() {
-		return !!this.idToken && !!this.accessToken;
+		return !!this.idToken && !!this.accessToken && this.expiresAt * 1000 > (Date.now());
 	}
 
 	login() {

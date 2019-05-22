@@ -1,8 +1,12 @@
 {
 	"IsEncrypted": false,
 	"Values": {
-		"AzureWebJobsStorage": "",
+		"AzureWebJobsStorage": "***REMOVED***",
 		"NODE_ENV": "development",
-		"FUNCTIONS_WORKER_RUNTIME": "node"
+		"FUNCTIONS_WORKER_RUNTIME": "node",
+		"environment": "dev"
+	},
+	"Host": {
+		"CORS": "*"
 	}
 }

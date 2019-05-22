@@ -1,14 +1,20 @@
-import {Table, Model, IsUUID, PrimaryKey, Column, HasMany} from "sequelize-typescript";
-import * as uuid from 'uuid/v4';
+import {
+    Table,
+    Model,
+    IsUUID,
+    PrimaryKey,
+    Column,
+    HasMany
+} from "sequelize-typescript";
 
-import File from './File.model'
+import File from "./File.model";
 
 @Table
 export default class Source extends Model<Source> {
     @IsUUID(4)
     @PrimaryKey
     @Column
-    id: string = uuid();
+    id: string;
 
     @Column rootUrl: string;
 
@@ -17,5 +23,5 @@ export default class Source extends Model<Source> {
     @Column code: string;
 
     @HasMany(() => File)
-    files: File;
+    files: File[];
 }

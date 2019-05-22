@@ -1,5 +1,8 @@
 import { AzureHttpFunction } from "../types/AzureHttpFunction";
-import { Context, HttpRequest } from "../../node_modules/azure-functions-ts-essentials";
+import {
+    Context,
+    HttpRequest
+} from "../../node_modules/azure-functions-ts-essentials";
 import { sequelize } from "../setups/dbSetup";
 
 const withDatabase = (next: AzureHttpFunction): AzureHttpFunction => {

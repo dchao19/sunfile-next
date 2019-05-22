@@ -8,5 +8,7 @@
     "azureFunctions.projectLanguage": "JavaScript",
     "azureFunctions.projectRuntime": "~2",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.preDeployTask": "func: extensions install"
+    "azureFunctions.preDeployTask": "func: extensions install",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "editor.formatOnSave": true
 }

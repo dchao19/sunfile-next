@@ -10,7 +10,8 @@ import AuthService from "@/services/authService";
 export default class ImplicitCallback extends Vue {
 	async beforeMount() {
 		await AuthService.handleAuthentication();
-		this.$router.push("/");
+
+		this.$router.push("/checkteam");
 	}
 }
 </script>

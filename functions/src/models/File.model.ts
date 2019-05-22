@@ -1,5 +1,12 @@
-import {Table, Model, IsUUID, PrimaryKey, Column, ForeignKey, BelongsTo} from "sequelize-typescript";
-import * as uuid from 'uuid/v4';
+import {
+    Table,
+    Model,
+    IsUUID,
+    PrimaryKey,
+    Column,
+    ForeignKey,
+    BelongsTo
+} from "sequelize-typescript";
 import Source from "./Source.model";
 import Team from "./Team.model";
 import User from "./User.model";
@@ -11,7 +18,7 @@ export default class File extends Model<File> {
     @IsUUID(4)
     @PrimaryKey
     @Column
-    id: string = uuid();
+    id: string;
 
     @Column title: string;
     @Column url: string;

@@ -12,28 +12,29 @@
     "@okta/okta-auth-js": "^1.17.0",
     "@types/chrome": "^0.0.69",
     "@types/uuid": "^3.4.3",
-    "bootstrap-vue": "^2.0.0-rc.11",
+    "bootstrap-vue": "^2.0.0-rc.20",
     "uuid": "^3.3.2",
-    "vue": "^2.5.16",
-    "vue-class-component": "^6.0.0",
+    "vue": "^2.6.10",
+    "vue-class-component": "^7.1.0",
     "vue-material-design-icons": "^1.5.1",
-    "vue-property-decorator": "^7.0.0",
+    "vue-property-decorator": "^8.1.1",
     "vue-router": "^3.0.1",
     "vue-router-multiguard": "^1.0.3",
-    "vuex": "^3.0.1",
-    "vuex-class": "^0.3.1"
+    "vuex": "^3.1.1",
+    "vuex-class": "^0.3.2"
   },
   "devDependencies": {
     "@types/jest": "^23.1.4",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.4",
-    "@vue/cli-plugin-typescript": "^3.0.0-rc.4",
-    "@vue/cli-plugin-unit-jest": "^3.0.0-rc.4",
-    "@vue/cli-service": "^3.0.0-rc.4",
-    "@vue/eslint-config-prettier": "^3.0.0-rc.4",
-    "@vue/eslint-config-typescript": "^3.0.0-rc.4",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-plugin-typescript": "^3.7.0",
+    "@vue/cli-plugin-unit-jest": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/eslint-config-typescript": "^4.0.0",
     "@vue/test-utils": "^1.0.0-beta.20",
     "jest-junit": "^5.1.0",
     "ts-jest": "^23.0.0",
-    "vue-template-compiler": "^2.5.16"
+    "typescript": "^3.4.5",
+    "vue-template-compiler": "^2.6.10"
   }
 }

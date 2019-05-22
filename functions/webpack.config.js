@@ -3,7 +3,6 @@ const path = require("path");
 const webpack = require("webpack");
 const uglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const copyWebpackPlugin = require("copy-webpack-plugin");
-const cleanPlugin = require("clean-webpack-plugin");
 const dotenvPlugin = require("dotenv-webpack");
 
 const OUTPUT_DIR = path.resolve(__dirname, "build");
@@ -21,11 +20,10 @@ module.exports = {
         extensions: [".ts", ".js", ".json"],
         modules: ["node_modules", "src"],
         alias: {
-            '@': path.resolve(__dirname, 'src/'),
-            'node-fetch$': "node-fetch/lib/index.js"
+            "@": path.resolve(__dirname, "src/"),
+            "node-fetch$": "node-fetch/lib/index.js"
         }
     },
-    devtool: "source-map",
     externals: ["pg", "sqlite3", "pg-hstore", "mysql2"],
     entry: funcMap,
     output: {
@@ -39,6 +37,13 @@ module.exports = {
                 test: /\.ts$/,
                 use: "ts-loader",
                 exclude: [/\.(spec|e2e)\.ts$/]
+            },
+            {
+                test: /\.docx$/,
+                use: {
+                    loader: "file-loader",
+                    options: {}
+                }
             }
         ]
     },
@@ -62,8 +67,6 @@ module.exports = {
                 toType: "template",
                 to: "[1]/function.json"
             }
-        ]),
-        new webpack.ContextReplacementPlugin(/Sequelize(\\|\/)/, path.resolve(__dirname, "./src")),
-        new cleanPlugin()
+        ])
     ]
 };

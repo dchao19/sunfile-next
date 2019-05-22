@@ -1,19 +1,26 @@
 {
-  "disabled": false,
-  "scriptFile": "createFile.js",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "route": "files",
-      "methods": ["post"]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ]
+    "disabled": false,
+    "scriptFile": "createFile.js",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "files/{fileId}",
+            "methods": ["post"]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        },
+        {
+            "type": "blob",
+            "direction": "out",
+            "name": "output",
+            "path": "%environment%-files/{fileId}.docx",
+            "dataType": "binary"
+        }
+    ]
 }

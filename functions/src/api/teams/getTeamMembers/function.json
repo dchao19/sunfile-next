@@ -1,0 +1,19 @@
+{
+    "disabled": false,
+    "scriptFile": "getTeamMembers.js",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "teams/{teamCode}/members",
+            "methods": ["get"]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}

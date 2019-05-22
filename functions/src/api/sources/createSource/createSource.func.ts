@@ -1,5 +1,6 @@
 import {Context, HttpStatusCode} from "azure-functions-ts-essentials";
 import {SecuredHttpRequest} from "@/types/SecuredHttpRequest";
+import * as uuid from 'uuid/v4';
 
 import {withAuth} from "@/utils/withAuth";
 import Source from "@/models/Source.model";
@@ -25,7 +26,8 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
     const source = new Source({
         name,
         code,
-        rootUrl
+        rootUrl,
+        id: uuid()
     });
 
     try {

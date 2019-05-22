@@ -18,6 +18,17 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         return;
     }
 
+    if (req.user.teamCode) {
+        context.res = {
+            status: HttpStatusCode.Conflict,
+            body: {
+                success: false,
+                result: null,
+                message: "The user is already joined to a team."
+            }
+        }
+    }
+
     const team = await Team.findById(teamCode);
     if (!team) {
         context.res = {
@@ -36,7 +47,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         context.res = {
             status: HttpStatusCode.OK,
             body: {
-                sucess: true,
+                success: true,
                 result: team,
                 message: "Sucessfully joined the team."
             }
@@ -45,7 +56,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         context.res = {
             status: HttpStatusCode.InternalServerError,
             body: {
-                sucess: false,
+                success: false,
                 result: e,
                 message: "An internal server error occurred."
             }

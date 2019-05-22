@@ -1,5 +1,6 @@
 import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
 import { SecuredHttpRequest } from "@/types/SecuredHttpRequest";
+import * as uuid from "uuid/v4";
 
 import { generateTeamCode } from "@/utils/generateTeamCode";
 import { withAuth } from "@/utils/withAuth";
@@ -26,7 +27,8 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
         const newTeam = new Team(
             {
                 name,
-                teamCode
+                teamCode,
+                id: uuid()
             },
             {
                 include: [User]

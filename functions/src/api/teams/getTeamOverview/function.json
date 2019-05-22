@@ -1,0 +1,19 @@
+{
+    "disabled": false,
+    "scriptFile": "getTeamOverview.js",
+    "bindings": [
+        {
+            "authLevel": "function",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "teams/{teamCode}",
+            "methods": ["get"]
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
+}
