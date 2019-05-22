@@ -2,25 +2,25 @@
     "disabled": false,
     "scriptFile": "getFile.js",
     "bindings": [
-      {
-        "authLevel": "function",
-        "type": "httpTrigger",
-        "direction": "in",
-        "name": "req",
-        "route": "files/{fileId}",
-        "methods": ["get"]
-      },
-      {
-        "type": "blob",
-        "direction": "in",
-        "name": "fileData",
-        "path": "dev-files/{fileId}.docx",
-        "dataType": "binary"
-      },
-      {
-        "type": "http",
-        "direction": "out",
-        "name": "res"
-      }
+        {
+            "authLevel": "anonymous",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "files/{fileId}",
+            "methods": ["get"]
+        },
+        {
+            "type": "blob",
+            "direction": "in",
+            "name": "fileData",
+            "path": "dev-files/{fileId}.docx",
+            "dataType": "binary"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
     ]
-  }
+}

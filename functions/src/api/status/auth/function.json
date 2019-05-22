@@ -1,18 +1,18 @@
 {
-	"disabled": false,
-	"scriptFile": "auth.js",
-	"bindings": [
-		{
-			"authLevel": "function",
-			"type": "httpTrigger",
-			"direction": "in",
-			"name": "req",
-			"route": "status/auth"
-		},
-		{
-			"type": "http",
-			"direction": "out",
-			"name": "res"
-		}
-	]
+    "disabled": false,
+    "scriptFile": "auth.js",
+    "bindings": [
+        {
+            "authLevel": "anonymous",
+            "type": "httpTrigger",
+            "direction": "in",
+            "name": "req",
+            "route": "status/auth"
+        },
+        {
+            "type": "http",
+            "direction": "out",
+            "name": "res"
+        }
+    ]
 }
