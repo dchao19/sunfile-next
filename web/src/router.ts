@@ -62,6 +62,22 @@ export default new Router({
                         import(
                             /* webpackChunkName: "overview" */ "@/views/Overview.vue"
                         )
+                },
+                {
+                    path: "team",
+                    name: "team",
+                    component: () =>
+                        import(
+                            /* webpackChunkName: "overview" */ "@/views/TeamMembers.vue"
+                        )
+                },
+                {
+                    path: "filing",
+                    name: "filing",
+                    component: () =>
+                        import(
+                            /* webpackChunkName: "overview" */ "@/views/Filing.vue"
+                        )
                 }
             ]
         }

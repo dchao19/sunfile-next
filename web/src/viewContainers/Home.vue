@@ -32,9 +32,14 @@ export default class Onboarding extends Vue {}
     display: flex;
     flex-direction: column;
     height: 100%;
+    align-items: center;
 }
 
 .content {
-    height: 85%;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>

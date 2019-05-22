@@ -1,7 +1,7 @@
 <template>
   <div class="headerContainer">
-      <slot></slot>
       <h1 class="headerText">sunfile.</h1>
+      <slot></slot>
   </div>
 </template>
 
@@ -20,18 +20,19 @@ export default class Header extends Vue {}
 }
 
 .headerText {
-  font-size: 10em;
+  font-size: 9em;
   color: white;
-  margin: 0.5em;
+  margin: 0.25em;
 }
 
 .headerContainer {
-  height: 20%;
+  height: 40%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
   background-color: rgba(147, 112, 219, 0.75);
+  flex-direction: column;
 }
 
 </style>

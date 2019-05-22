@@ -17,7 +17,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Action } from "vuex-class";
-import AccountGroupIcon from "vue-material-design-icons/account-group.vue";
+import AccountGroupIcon from "vue-material-design-icons/AccountGroup.vue";
 
 import TeamService from "@/services/teamService";
 

@@ -13,7 +13,7 @@ export default class ImplicitCallback extends Vue {
 	async beforeMount() {
 		await AuthService.handleAuthentication();
 
-		this.$router.push("home");
+		this.$router.push({name: "checkteam"});
 	}
 }
 </script>

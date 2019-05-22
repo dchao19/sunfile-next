@@ -1,9 +1,6 @@
 <template>
   <div class="landingContainer">
     <Header>
-      <div class="headerContainer">
-        <h1 class="headerText">sunfile.</h1>
-      </div>
     </Header>
 
     <div class="mainLanding">
@@ -18,7 +15,7 @@
       <div class="entrypoint">
         <b-card>
           <h2 class="jokeText">Let's get started.</h2>
-          <b-button variant="primary" block>Log in or sign up</b-button>
+          <b-button @click="loginClick" variant="primary" block>Log in or sign up</b-button>
           <hr>
           <a href="https://chrome.google.com/webstore/detail/ljhciodenpkegapaikengdbcglopgome/"><img src="../assets/chrome-badge.png"></a>
         </b-card>
@@ -31,13 +28,18 @@
 import { Vue, Component } from "vue-property-decorator";
 
 import Header from "@/components/Header.vue";
+import AuthService from "@/services/authService";
 
 @Component({
   components: {
     Header
   }
 })
-export default class Landing extends Vue {}
+export default class Landing extends Vue {
+  loginClick(){
+    AuthService.login();
+  }
+}
 </script>
 
 <style>
@@ -83,10 +85,5 @@ export default class Landing extends Vue {}
 .entrypoint {
   margin-left: 5em;
   text-align: left;
-}
-
-html,
-body {
-  height: 100%;
 }
 </style>

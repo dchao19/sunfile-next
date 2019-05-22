@@ -1,15 +1,15 @@
 <template>
   <div id="nav">
     <b-nav>
-      <b-nav-item active-class="underline" :to:"{ name: 'overview' }">Home</b-nav-item>
-      <b-nav-item active-class="underline" :to:"{ name: 'team' }">Team</b-nav-item>
-      <b-nav-item active-class="underline" :to:"{ name: 'filing' }">Filing</b-nav-item>
+      <b-nav-item active-class="underline" exact :to="{ name: 'overview' }">Home</b-nav-item>
+      <b-nav-item active-class="underline" exact :to="{ name: 'team' }">Team</b-nav-item>
+      <b-nav-item active-class="underline" exact :to="{ name: 'filing' }">Filing</b-nav-item>
     </b-nav>
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue";
+import { Vue, Component } from "vue-property-decorator";
 
 @Component
 export default class NavigationBar extends Vue {}
@@ -17,6 +17,12 @@ export default class NavigationBar extends Vue {}
 
 <style scoped>
 .underline {
-  border-bottom: 0.5em solid white;
+  border-bottom: 0.25em solid darkmagenta;
+  background-color: rgba(0, 0, 0, 0.20)
 }
+
+.nav-link {
+  color: white;
+}
+
 </style>
