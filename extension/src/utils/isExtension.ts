@@ -1,3 +1,3 @@
 export const isExtension = () => {
-	return typeof chrome.extension !== "undefined";
+  return typeof chrome.extension !== "undefined";
 };

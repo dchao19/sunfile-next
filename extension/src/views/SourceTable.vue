@@ -1,8 +1,18 @@
 <template>
   <div class="sourceTable">
-    <AddSourceModal :id="modal.id" :title="modal.title" @source-created="addSource"/>
-    <b-form-input class="sourceFilter" v-model="filterText" placeholder="Search..."></b-form-input>
-    <b-button @click="showModal" class="addSourceButton" variant="primary">Add a new source</b-button>
+    <AddSourceModal
+      :id="modal.id"
+      :title="modal.title"
+      @source-created="addSource"
+    />
+    <b-form-input
+      class="sourceFilter"
+      v-model="filterText"
+      placeholder="Search..."
+    ></b-form-input>
+    <b-button @click="showModal" class="addSourceButton" variant="primary"
+      >Add a new source</b-button
+    >
     <b-table
       :per-page="pagination.rowsPerPage"
       :current-page="pagination.currentPage"
@@ -96,4 +106,3 @@ export default class SourceTable extends Vue {
   margin-bottom: 0.75em;
 }
 </style>
-

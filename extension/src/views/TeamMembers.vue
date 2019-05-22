@@ -4,7 +4,9 @@
     <ul class="teamMemberList">
       <li v-if="teamMembers.length === 0 && !loading">
         <Panel>
-          <template v-slot:left>There aren't any team members yet!</template>
+          <template v-slot:left
+            >There aren't any team members yet!</template
+          >
         </Panel>
       </li>
       <li v-for="member in teamMembers" v-bind:key="member.id">
@@ -12,7 +14,9 @@
           <template v-slot:left>
             <strong>{{ member.name }}</strong>
           </template>
-          <template v-slot:right>{{ member.numArticles }} articles</template>
+          <template v-slot:right
+            >{{ member.numArticles }} articles</template
+          >
         </Panel>
       </li>
     </ul>

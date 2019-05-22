@@ -1,6 +1,8 @@
 <template>
   <b-modal busy :id="id" :title="title">
-    <b-alert dismissible :show="alert.show" variant="danger">{{alert.message}}</b-alert>
+    <b-alert dismissible :show="alert.show" variant="danger">{{
+      alert.message
+    }}</b-alert>
     <b-form ref="form" @submit.stop.prevent="handleSubmit">
       <b-form-group
         description="ex. New York Times"
@@ -9,7 +11,11 @@
         invalid-feedback="A source name is required!"
         :state="name.validated"
       >
-        <b-form-input id="nameField" v-model="name.value" required></b-form-input>
+        <b-form-input
+          id="nameField"
+          v-model="name.value"
+          required
+        ></b-form-input>
       </b-form-group>
 
       <b-form-group
@@ -19,7 +25,11 @@
         invalid-feedback="A source code is required!"
         :state="code.validated"
       >
-        <b-form-input id="codeField" v-model="code.value" required></b-form-input>
+        <b-form-input
+          id="codeField"
+          v-model="code.value"
+          required
+        ></b-form-input>
       </b-form-group>
 
       <b-form-group
@@ -34,13 +44,17 @@
     </b-form>
 
     <template
-      v-bind="{loading, addSource, formsValidated}"
+      v-bind="{ loading, addSource, formsValidated }"
       slot="modal-footer"
       slot-scope="{ cancel }"
     >
       <b-button :disabled="loading" @click="cancel()">Cancel</b-button>
-      <b-button :disabled="loading || !formsValidated" variant="primary" @click="addSource">
-        <b-spinner small v-if="loading"/>
+      <b-button
+        :disabled="loading || !formsValidated"
+        variant="primary"
+        @click="addSource"
+      >
+        <b-spinner small v-if="loading" />
         {{ loading ? "Loading..." : "Add" }}
       </b-button>
     </template>

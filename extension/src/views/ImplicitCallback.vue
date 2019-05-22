@@ -1,5 +1,5 @@
 <template>
-<h1>Loading...</h1>
+  <h1>Loading...</h1>
 </template>
 
 <script lang="ts">
@@ -8,10 +8,10 @@ import AuthService from "@/services/authService";
 
 @Component
 export default class ImplicitCallback extends Vue {
-	async beforeMount() {
-		await AuthService.handleAuthentication();
+  async beforeMount() {
+    await AuthService.handleAuthentication();
 
-		this.$router.push("/checkteam");
-	}
+    this.$router.push("/checkteam");
+  }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
   <div class="main">
-    <Greeter/>
-    <FileButton/>
-    <hr/>
-    <NavigationBar/>
+    <Greeter />
+    <FileButton />
+    <hr />
+    <NavigationBar />
     <router-view></router-view>
   </div>
 </template>

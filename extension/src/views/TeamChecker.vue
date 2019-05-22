@@ -1,6 +1,6 @@
 <template>
   <div class="teamChecker">
-    <b-spinner/>
+    <b-spinner />
   </div>
 </template>
 
@@ -31,4 +31,3 @@ export default class TeamChecker extends Vue {
   }
 }
 </script>
-

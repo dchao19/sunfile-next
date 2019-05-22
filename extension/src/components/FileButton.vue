@@ -5,7 +5,8 @@
     @click="fileClick"
     block
     variant="outline-success"
-  >{{fileButtonText}}</b-button>
+    >{{ fileButtonText }}</b-button
+  >
 </template>
 
 <script lang="ts">

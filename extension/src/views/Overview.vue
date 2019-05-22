@@ -8,7 +8,7 @@
             <li>
               <strong>Team Name</strong>
             </li>
-            <li>{{name}}</li>
+            <li>{{ name }}</li>
           </ul>
         </template>
         <template v-slot:right>
@@ -16,7 +16,7 @@
             <li>
               <strong>Team Code</strong>
             </li>
-            <li>{{teamCode}}</li>
+            <li>{{ teamCode }}</li>
           </ul>
         </template>
       </Panel>
@@ -26,7 +26,9 @@
             <strong>My articles this season</strong>
           </div>
         </template>
-        <template v-slot:right>{{userCount}} articles</template>
+        <template v-slot:right
+          >{{ userCount }} articles</template
+        >
       </Panel>
       <Panel class="teamArticles">
         <template v-slot:left>
@@ -34,7 +36,9 @@
             <strong>Team articles this season</strong>
           </div>
         </template>
-        <template v-slot:right>{{teamCount}} articles</template>
+        <template v-slot:right
+          >{{ teamCount }} articles</template
+        >
       </Panel>
     </div>
   </div>
