@@ -36,7 +36,7 @@
     },
     "scripts": {
         "build:dev": "webpack --progress --mode=development",
-        "build:prod": "webpack --progress --mode=production",
+        "build:prod": "webpack --progress",
         "start": "cd build && func host start",
         "lint": "tslint src/",
         "test": "jest"

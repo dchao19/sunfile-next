@@ -11,7 +11,10 @@ const sequelize = new Sequelize({
     database: process.env.DB_NAME,
     dialect: "mssql",
     username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD
+    password: process.env.DB_PASSWORD,
+    dialectOptions: {
+        encrypt: process.env.DB_ENCRYPT
+    }
 });
 
 sequelize.addModels([Source, Team, User, File]);
