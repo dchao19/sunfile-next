@@ -1,0 +1,17 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "",
+        "NODE_ENV": "",
+        "FUNCTIONS_WORKER_RUNTIME": "",
+        "STORAGE_ENV": "",
+        "DB_HOST": "",
+        "DB_NAME": "",
+        "DB_USERNAME": "",
+        "DB_PASSWORD": "",
+        "OKTA_ISSUER": ""
+    },
+    "Host": {
+        "CORS": "*"
+    }
+}

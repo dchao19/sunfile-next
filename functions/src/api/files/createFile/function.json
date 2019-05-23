@@ -19,7 +19,7 @@
             "type": "blob",
             "direction": "out",
             "name": "output",
-            "path": "%environment%-files/{fileId}.docx",
+            "path": "%STORAGE_ENV%-files/{fileId}.docx",
             "dataType": "binary"
         }
     ]

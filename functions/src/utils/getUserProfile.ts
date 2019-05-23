@@ -1,12 +1,12 @@
-import * as request from "request-promise-native";
+import fetch from "node-fetch";
 import { json } from "body-parser";
 
 export const getUserProfile = async (accessToken: string) => {
-    return await request(`${process.env.OKTA_ISSUER}/v1/userinfo`, {
+    const res = await fetch(`${process.env.OKTA_ISSUER}/v1/userinfo`, {
         headers: {
             Authorization: `Bearer ${accessToken}`
-        },
-        method: "GET",
-        json: true
+        }
     });
+
+    return await res.json();
 };

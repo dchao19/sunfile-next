@@ -3,7 +3,6 @@ const path = require("path");
 const webpack = require("webpack");
 const uglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const copyWebpackPlugin = require("copy-webpack-plugin");
-const dotenvPlugin = require("dotenv-webpack");
 
 const OUTPUT_DIR = path.resolve(__dirname, "build");
 
@@ -48,9 +47,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new dotenvPlugin({
-            systemvars: !!process.env.CI
-        }),
         new copyWebpackPlugin([
             {
                 from: "src/host.json",
