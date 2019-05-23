@@ -1,8 +1,15 @@
 import * as OktaJwtVerifier from "@okta/jwt-verifier";
-import { Context, HttpRequest, HttpStatusCode } from "azure-functions-ts-essentials";
-import * as uuid from 'uuid/v4';
+import {
+    Context,
+    HttpRequest,
+    HttpStatusCode
+} from "azure-functions-ts-essentials";
+import * as uuid from "uuid/v4";
 
-import { AzureHttpFunction, SecuredAzureHttpFunction } from "../types/AzureHttpFunction";
+import {
+    AzureHttpFunction,
+    SecuredAzureHttpFunction
+} from "../types/AzureHttpFunction";
 import { AccessTokenClaims } from "../types/OktaUser";
 
 import { withDatabase } from "./withDatabase";
@@ -20,7 +27,10 @@ const extractTokenFromHeader = (header: string): string => {
 const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
     return withDatabase(async (context: Context, req: HttpRequest) => {
         const authorizationHeader = req.headers["authorization"];
-        if (typeof authorizationHeader === "undefined" || !authorizationHeader) {
+        if (
+            typeof authorizationHeader === "undefined" ||
+            !authorizationHeader
+        ) {
             context.res = {
                 status: HttpStatusCode.Unauthorized,
                 body: {
@@ -34,7 +44,9 @@ const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
 
         try {
             const accessToken = extractTokenFromHeader(authorizationHeader);
-            const authResult = await oktaJwtVerifier.verifyAccessToken(accessToken);
+            const authResult = await oktaJwtVerifier.verifyAccessToken(
+                accessToken
+            );
             const claims = authResult.claims as AccessTokenClaims;
 
             let user = await User.findOne({
@@ -57,13 +69,14 @@ const withAuth = (next: SecuredAzureHttpFunction): AzureHttpFunction => {
             const authorizedReq = { ...req, user };
             await next(context, authorizedReq);
         } catch (e) {
-            console.log(e);
+            context.log.error(e);
             context.res = {
                 status: HttpStatusCode.Unauthorized,
                 body: {
                     success: false,
                     result: null,
-                    message: "Access denied: token missing, malformed, or failed validation."
+                    message:
+                        "Access denied: token missing, malformed, or failed validation."
                 }
             };
             return;
