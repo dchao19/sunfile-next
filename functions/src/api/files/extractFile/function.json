@@ -1,21 +1,14 @@
 {
     "disabled": false,
-    "scriptFile": "getFile.js",
+    "scriptFile": "extractFile.js",
     "bindings": [
         {
             "authLevel": "anonymous",
             "type": "httpTrigger",
             "direction": "in",
             "name": "req",
-            "route": "files/get/{fileId}",
+            "route": "files/extract",
             "methods": ["get"]
-        },
-        {
-            "type": "blob",
-            "direction": "in",
-            "name": "fileData",
-            "path": "dev-files/{fileId}.docx",
-            "dataType": "binary"
         },
         {
             "type": "http",

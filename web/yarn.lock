@@ -90,6 +90,16 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
+"@ckeditor/ckeditor5-build-classic@^12.1.0":
+  version "12.1.0"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-12.1.0.tgz#bd8127b8f11ce0a33a3dd8893546bbed5ab5fd30"
+  integrity sha512-SYT+stYBS8JqxWZNye5x9AlwNmwY7+bp2IKNdZDsolKFF1CjOC18gmIB4isGfINzFgn/ke1H21XDenZYp3IxqA==
+
+"@ckeditor/ckeditor5-vue@^1.0.0-beta.2":
+  version "1.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-vue/-/ckeditor5-vue-1.0.0-beta.2.tgz#9491cf3e4b030847cd329ae3680c52996195d8bf"
+  integrity sha512-9qF795EKQZi2VV5zgYjUfAY2L3rr50NaZOAMq2O2sADrWMxUGOb3cUAD6FuV3kboVaKoSmXGcApm7Iy5YTGr3g==
+
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@intervolga/optimize-cssnano-plugin/-/optimize-cssnano-plugin-1.0.6.tgz#be7c7846128b88f6a9b1d1261a0ad06eb5c0fdf8"

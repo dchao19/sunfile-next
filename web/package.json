@@ -10,6 +10,8 @@
     "deploy": "surge dist"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^12.1.0",
+    "@ckeditor/ckeditor5-vue": "^1.0.0-beta.2",
     "@okta/okta-auth-js": "^2.5.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.20",

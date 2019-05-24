@@ -1,14 +1,13 @@
 import { Context, HttpStatusCode } from "azure-functions-ts-essentials";
 import { SecuredHttpRequest } from "@/types/SecuredHttpRequest";
 import { withAuth } from "@/utils/withAuth";
+import { sequelize } from "@/setups/dbSetup";
 
 import File from "@/models/File.model";
 import Source from "@/models/Source.model";
 import User from "@/models/User.model";
-import Team from "@/models/Team.model";
 
-import * as Mercury from "@sunfile/parser";
-import * as textConverter from "html-to-text";
+import * as moment from "moment";
 import * as docxtemplater from "docxtemplater";
 import * as JSZip from "jszip";
 import * as fs from "fs";
@@ -16,46 +15,27 @@ import * as uuid from "uuid/v4";
 import { transliterate as tr } from "transliteration";
 import { decode } from "iconv-lite";
 
-import * as moment from "moment";
-
-import { sequelize } from "@/setups/dbSetup";
-
 const template = new JSZip(
-    fs.readFileSync(require("./template.docx"), "binary")
+    fs.readFileSync(require("./templateWithHighlight.docx"), "binary")
 );
 const templater = new docxtemplater();
 templater.loadZip(template);
 
 const run = async (context: Context, req: SecuredHttpRequest) => {
-    const html = Buffer.from(req.body.html);
-    const url = req.body.url as string;
-    const id = req.params.fileId;
+    const metadata = req.body.metadata;
+    const url = req.body.url;
+    const id = req.body.id;
+    const paragraphs = req.body.paragraphs;
+
+    console.log(id);
 
     try {
-        const metadata = await Mercury.parse(url, {
-            html,
-            contentType: "html"
-        });
-
-        const decoded = tr(decode(Buffer.from(metadata.content), "utf8"));
-        const text = textConverter.fromString(decoded, {
-            wordwrap: false,
-            ignoreHref: true,
-            ignoreImage: true,
-            singleNewLineParagraphs: true,
-            uppercaseHeadings: false
-        });
-
-        const paragraphs = text.split("\n").map(content => {
-            return { content };
-        });
-
         const newFile = new File(
             {
                 published: new Date(metadata.date_published),
                 url,
-                title: tr(decode(Buffer.from(metadata.title), "utf8")),
-                id
+                title: metadata.title,
+                id: uuid()
             },
             {
                 include: [Source, User]
@@ -117,17 +97,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
                 message: "Article saved."
             }
         };
-    } catch (e) {
-        console.log(e);
-        context.res = {
-            status: HttpStatusCode.InternalServerError,
-            body: {
-                success: false,
-                result: null,
-                message: e
-            }
-        };
-    }
+    } catch (e) {}
 };
 
 export default withAuth(run);

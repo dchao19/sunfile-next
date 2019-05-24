@@ -1,13 +1,13 @@
 {
     "disabled": false,
-    "scriptFile": "createFile.js",
+    "scriptFile": "templateFile.js",
     "bindings": [
         {
             "authLevel": "anonymous",
             "type": "httpTrigger",
             "direction": "in",
             "name": "req",
-            "route": "files/create/{fileId}",
+            "route": "files/template/",
             "methods": ["post"]
         },
         {
@@ -19,7 +19,7 @@
             "type": "blob",
             "direction": "out",
             "name": "output",
-            "path": "%STORAGE_ENV%-files/{fileId}.docx",
+            "path": "%STORAGE_ENV%-files/{id}.docx",
             "dataType": "binary"
         }
     ]

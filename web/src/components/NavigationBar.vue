@@ -3,7 +3,7 @@
     <b-nav>
       <b-nav-item active-class="underline" exact :to="{ name: 'overview' }">Home</b-nav-item>
       <b-nav-item active-class="underline" exact :to="{ name: 'team' }">Team</b-nav-item>
-      <b-nav-item active-class="underline" exact :to="{ name: 'filing' }">Filing</b-nav-item>
+      <b-nav-item active-class="underline" exact :to="{ name: 'extractionStep' }">Filing</b-nav-item>
     </b-nav>
   </div>
 </template>
@@ -18,7 +18,6 @@ export default class NavigationBar extends Vue {}
 <style scoped>
 .underline {
   border-bottom: 0.25em solid darkmagenta;
-  background-color: rgba(0, 0, 0, 0.20)
 }
 
 .nav-link {

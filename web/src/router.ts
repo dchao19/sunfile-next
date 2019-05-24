@@ -72,13 +72,23 @@ export default new Router({
                         )
                 },
                 {
-                    path: "filing",
-                    name: "filing",
-                    component: () =>
-                        import(
-                            /* webpackChunkName: "overview" */ "@/views/Filing.vue"
-                        )
-                }
+                            path: "filing",
+                            name: "extractionStep",
+                            component: () =>
+                                import (
+                                    /* webpackChunkName: "extraction" */"@/views/filingSteps/extractionStep.vue"
+                                )
+                        },
+                        {
+                            path: "filing/highlight",
+                            name: "highlightStep",
+                            component: () =>
+                                import (
+                                    /* webpackChunkName: "extraction" */"@/views/filingSteps/highlightStep.vue"
+                                )
+                        }
+                    
+                
             ]
         }
     ]
