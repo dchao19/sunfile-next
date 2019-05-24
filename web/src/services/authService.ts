@@ -30,23 +30,23 @@ class AuthService {
 		this.login = this.login.bind(this);
 	}
 
-	get accessToken(): string {
-		const token = this.okta.tokenManager.get("accessToken");
+	async accessToken(): Promise<string> {
+		const token = await this.okta.tokenManager.get("accessToken");
 		return token ? token.accessToken : undefined;
 	}
 
-	get idToken(): string {
-		const token = this.okta.tokenManager.get("idToken");
+	async idToken(): Promise<string> {
+		const token = await this.okta.tokenManager.get("idToken");
 		return token ? token.idToken : undefined;
 	}
 
-	get expiresAt(): number {
-		const token = this.okta.tokenManager.get("accessToken");
+	async expiresAt(): Promise<number> {
+		const token = await this.okta.tokenManager.get("accessToken");
 		return token ? token.expiresAt : 0;
 	}
 
-	get name(): string { 
-		const token = this.okta.tokenManager.get("idToken");
+	async name(): Promise<string> { 
+		const token = await this.okta.tokenManager.get("idToken");
 		return token ? token.claims.name : undefined;
 	}
 
@@ -58,8 +58,10 @@ class AuthService {
 		});
 	}
 
-	isAuthenticated() {
-		return !!this.idToken && !!this.accessToken && this.expiresAt * 1000 > (Date.now());
+	async isAuthenticated() {
+		const [idToken, accessToken] = await Promise.all([this.idToken(), this.accessToken()])
+
+		return idToken && accessToken;
 	}
 
 	login() {
@@ -69,8 +71,8 @@ class AuthService {
         });
     }
 
-	authRequired = (to: Route, from: Route, next: (to?: RawLocation) => void) => {
-		this.isAuthenticated() ? next() : next("/login");
+	authRequired = async (to: Route, from: Route, next: (to?: RawLocation) => void) => {
+		await this.isAuthenticated() ? next() : next("/login");
 	};
 }
 

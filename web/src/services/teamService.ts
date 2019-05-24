@@ -7,7 +7,7 @@ class TeamService {
     async userTeam(): Promise<Team | null> {
         const res = await fetch(`${this.baseUrl}/teams`, {
             headers: {
-                Authorization: `Bearer ${AuthService.accessToken}`
+                Authorization: `Bearer ${await AuthService.accessToken()}`
             }
         });
 
@@ -28,7 +28,7 @@ class TeamService {
     async joinTeam(teamCode: string): Promise<Team | null> {
         const res = await fetch(`${this.baseUrl}/teams/${teamCode}/join`, {
             headers: {
-                Authorization: `Bearer ${AuthService.accessToken}`
+                Authorization: `Bearer ${await AuthService.accessToken()}`
             }
         });
 
@@ -49,7 +49,7 @@ class TeamService {
     async getTeamMembers(teamCode: string): Promise<TeamMember[]> {
         const res = await fetch(`${this.baseUrl}/teams/${teamCode}/members`, {
             headers: {
-                Authorization: `Bearer ${AuthService.accessToken}`
+                Authorization: `Bearer ${await AuthService.accessToken()}`
             }
         });
 
@@ -70,7 +70,7 @@ class TeamService {
     async getTeamOverview(teamCode: string): Promise<TeamOverview | null> {
         const res = await fetch(`${this.baseUrl}/teams/${teamCode}`, {
             headers: {
-                Authorization: `Bearer ${AuthService.accessToken}`
+                Authorization: `Bearer ${await AuthService.accessToken()}`
             }
         });
 
