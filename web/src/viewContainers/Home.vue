@@ -24,7 +24,7 @@ import NavigationBar from "@/components/NavigationBar.vue"
         NavigationBar
     }
 })
-export default class Onboarding extends Vue {}
+export default class Home extends Vue {}
 </script>
 
 <style>
