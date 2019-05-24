@@ -6,7 +6,7 @@ class AuthService {
 	scopes: string = "";
 	state: string = uuidv4();
 	nonce: string = uuidv4();
-	redirectUri: string = "http://localhost:8080/implicit/callback";
+	redirectUri: string = `${process.env.VUE_APP_URL}/implicit/callback`;
 
 	authConfig = {
 		clientId: process.env.VUE_APP_OKTA_CLIENT_ID,
