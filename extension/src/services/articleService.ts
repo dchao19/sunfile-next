@@ -9,7 +9,7 @@ class ArticleService {
   async fileArticle(source: string, url: string): Promise<void> {
     const id = uuid();
 
-    const request = await fetch(`${this.baseUrl}/files/${id}`, {
+    const request = await fetch(`${this.baseUrl}/files/create/${id}`, {
       method: "POST",
       body: JSON.stringify({
         url,
@@ -23,7 +23,7 @@ class ArticleService {
     const response = await request.json();
 
     chrome.downloads.download({
-      url: `${this.baseUrl}/files/${response.result.id}`,
+      url: `${this.baseUrl}/files/get/${response.result.id}`,
       headers: [
         {
           name: "Authorization",
