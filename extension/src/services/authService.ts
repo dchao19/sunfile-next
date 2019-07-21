@@ -122,6 +122,7 @@ class AuthService {
 
   extensionLogin() {
     this.setOAuthParamCookie();
+    console.log(this.authorizeUrl());
     chrome.identity.launchWebAuthFlow(
       {
         url: this.authorizeUrl(),

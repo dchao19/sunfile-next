@@ -7,6 +7,8 @@ import File from "@/models/File.model";
 import Source from "@/models/Source.model";
 import User from "@/models/User.model";
 
+import { DOCUMENT_MIME_TYPE } from "@/constants/file";
+
 import * as moment from "moment";
 import * as docxtemplater from "docxtemplater";
 import * as JSZip from "jszip";
@@ -77,8 +79,7 @@ const run = async (context: Context, req: SecuredHttpRequest) => {
 
         context.bindings.output = templater.getZip().generate({
             type: "nodebuffer",
-            mimeType:
-                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            mimeType: DOCUMENT_MIME_TYPE
         });
 
         await newFile.save();
