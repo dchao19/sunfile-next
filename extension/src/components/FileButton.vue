@@ -14,7 +14,7 @@ import { Vue, Component } from "vue-property-decorator";
 import { Action } from "vuex-class";
 
 import { isExtension } from "@/utils/isExtension";
-import ArticleService from "@/services/articleService";
+import FileService from "@/services/fileService";
 
 @Component
 export default class FileButton extends Vue {
@@ -36,12 +36,11 @@ export default class FileButton extends Vue {
         async (message, sender, sendResponse) => {
           if (message.requestType === "pageSource") {
             try {
-              await ArticleService.fileArticle(message.source, message.url);
-
-              this.isFiling = false;
+              await FileService.fileArticle(message.source, message.url);
             } catch (e) {
-              this.isFiling = false;
               this.showError("An error occurred while filing that article!");
+            } finally {
+              this.isFiling = false;
             }
           }
         }

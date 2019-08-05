@@ -1,16 +1,14 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import Portal from "@/views/Portal.vue";
-import Login from "./views/Login.vue";
-import ImplicitCallback from "@/views/ImplicitCallback.vue";
-import JoinTeam from "@/views/JoinTeam.vue";
-import TeamChecker from "@/views/TeamChecker.vue";
-import TeamMembers from "@/views/TeamMembers.vue";
-import ArticleChart from "@/views/ArticleChart.vue";
-import SourceChart from "@/views/SourceChart.vue";
-import SourceTable from "@/views/SourceTable.vue";
-import Overview from "@/views/Overview.vue";
+import Portal from "@/views/portal/Portal.vue";
+import Login from "@/views/auth/Login.vue";
+import ImplicitCallback from "@/views/auth/ImplicitCallback.vue";
+import JoinTeam from "@/views/onboarding/JoinTeam.vue";
+import TeamChecker from "@/views/onboarding/TeamChecker.vue";
+import TeamMembers from "@/views/portal/TeamMembers.vue";
+import SourceTable from "@/views/portal/SourceTable.vue";
+import Overview from "@/views/portal/Overview.vue";
 
 import AuthService from "@/services/authService";
 import { isExtension } from "@/utils/isExtension";
@@ -37,16 +35,6 @@ const router = new Router({
           path: "members",
           name: "members",
           component: TeamMembers
-        },
-        {
-          path: "articles/:type",
-          name: "articles",
-          component: ArticleChart
-        },
-        {
-          path: "sources/:type",
-          name: "sources",
-          component: SourceChart
         },
         {
           path: "table",
